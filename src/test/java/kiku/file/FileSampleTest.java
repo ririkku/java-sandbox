@@ -53,4 +53,20 @@ public class FileSampleTest {
         List<String> actual = sut.テキストファイルの人の部分を取得してみる();
         assertThat(actual).contains("hosomi", "ubukata", "takada", "takahashi");
     }
+
+    @Test
+    public void テキストファイルをコピーしてみる() {
+        sut.テキストファイルをコピーしてみる("copy.txt");
+        String[] actual = sut.ディレクトリ();
+        assertThat(actual).contains("fileSample.txt", "FileSample.java", "copy.txt");
+        sut.テキストファイルを削除してみる("copy.txt");
+    }
+
+    @Test
+    public void テキストファイルを作成してみる(){
+        sut.テキストファイルを作成してみる("new.txt");
+        String[] actual = sut.ディレクトリ();
+        assertThat(actual).contains("fileSample.txt", "FileSample.java", "new.txt");
+        sut.テキストファイルを削除してみる("new.txt");
+    }
 }

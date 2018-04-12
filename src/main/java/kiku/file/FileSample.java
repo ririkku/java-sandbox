@@ -84,4 +84,32 @@ public class FileSample {
         }
         return Collections.emptyList();
     }
+
+    public void テキストファイルをコピーしてみる(String fileName) {
+        Path from = Paths.get(filePath);
+        Path to = Paths.get(dirPath + File.separator + fileName);
+        try {
+            Files.copy(from, to);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void テキストファイルを削除してみる(String fileName) {
+        Path path = Paths.get(dirPath + File.separator + fileName);
+        try {
+            Files.deleteIfExists(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void テキストファイルを作成してみる(String fileName) {
+        Path path = Paths.get(dirPath + File.separator + fileName);
+        try {
+            Files.createFile(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
